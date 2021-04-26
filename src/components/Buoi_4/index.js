@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, Text } from 'react-native';
 import BoxBottom from './BoxBottom';
 import ItemTop from './ItemTop'
 
-export default class Buoi03 extends Component {
+export default class Buoi04 extends Component {
     render() {
         const textAvatar = 'react native 02 cao thắng';
         const isShowHide = true;
