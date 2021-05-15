@@ -3,10 +3,13 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 
 export default class IconButtons extends Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         return (
             <View>
-                <TouchableOpacity onPress={this.props.onPress}>
+                <TouchableOpacity onPress={()=>this.props.onPress(this.props.icon)}>
                     <Image style={styles.SmallIcon} source= {this.props.icon}  />
                 </TouchableOpacity>
             </View>

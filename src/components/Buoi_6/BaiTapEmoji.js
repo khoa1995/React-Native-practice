@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
-// import angry from './../../assests/images/angry.png'
-// import sad from './../../assests/images/sad.png'
-// import care from './../../assests/images/care.png'
-// import haha from './../../assests/images/haha.png'
-// import like from './../../assests/images/like.png'
-// import love from './../../assests/images/love.png'
 
-import {image} from '../../assests/images'
+import emoIcon from '../../assests/images'
 import IconButtons from './IconButtons'
 
-export default class RenderIconState extends Component {
+export default class BaiTapEmoji extends Component {
     state = {
-        icon: image.haha
-    }   
+        icon: emoIcon.Haha
+    };
+    arrayIcon =[emoIcon.Angry, emoIcon.Care, emoIcon.Haha, emoIcon.Like, emoIcon.Love, emoIcon.Sad];  
     handleIcon = (icon) => {
         this.setState({icon})
     }
@@ -23,12 +18,12 @@ export default class RenderIconState extends Component {
             <View style ={styles.Container}>
                 <Image style={styles.BigIcon} source={this.state.icon}/>
                 <View style={styles.EmotionGroup}>
-                    <IconButtons icon = {image.sad}/>
-                    <IconButtons icon = {image.angry}/>
-                    <IconButtons icon = {image.haha}/>
-                    <IconButtons icon = {image.like}/>
-                    <IconButtons icon = {image.love}/>
-                    <IconButtons icon = {image.care} />
+                    <IconButtons icon = {emoIcon.Love} onPress={this.handleIcon}/>
+                    <IconButtons icon = {emoIcon.Sad} onPress={this.handleIcon}/>
+                    <IconButtons icon = {emoIcon.Angry} onPress={this.handleIcon}/>
+                    <IconButtons icon = {emoIcon.Haha} onPress={this.handleIcon}/>
+                    <IconButtons icon = {emoIcon.Like} onPress={this.handleIcon}/>
+                    <IconButtons icon = {emoIcon.Care} onPress={this.handleIcon}/>                  
                 </View>
 
             </View>
