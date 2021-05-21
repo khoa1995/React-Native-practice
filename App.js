@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import ReduxDemo from './src/components/Buoi_10_Redux';
+import BaiTapRedux from './src/components/Buoi_10_Redux/BaiTapRedux/BaiTapRedux';
+import store from './src/components/Buoi_10_Redux/redux/store';
 import Buoi04 from './src/components/Buoi_4';
 import RenderIconState from './src/components/Buoi_5/RenderIconState';
 import RenderWithState from './src/components/Buoi_5/RenderWithState';
@@ -31,7 +35,15 @@ class App extends Component {
 
       // <DemoFlatList/>
       // <DemoSectionList/>
-      <RockPaperScissor/>
+
+      //Game
+      // <RockPaperScissor/>
+
+      //Redux demo
+      <Provider store={store}>
+        {/* <ReduxDemo/> */}
+        <BaiTapRedux/>
+      </Provider>
     )
   }
 }

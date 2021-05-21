@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import {
-  Text,
   StyleSheet,
   View,
   ImageBackground,
-  Image,
   SafeAreaView,
   Platform,
   StatusBar,
-  TouchableOpacity,
 } from 'react-native';
 import {
   BackgroundImage,
@@ -61,12 +58,14 @@ export default class RockPaperScissor extends Component {
   onPressPlayButton = () => {
     this.setState({disabled: true});
     const random = setInterval(() => {
-      this.state.botSelect.image = this.state.arrayGame[
+      this.state.botSelect = this.state.arrayGame[
         Math.floor(Math.random() * 3)
-      ].image;
+      ];
 
       this.setState({
         botSelect: this.state.botSelect,
+      },()=> {
+        console.log(this.state.botSelect)
       });
     }, 100);
     setTimeout(() => {
@@ -74,18 +73,24 @@ export default class RockPaperScissor extends Component {
       let time, score;
       switch (this.state.playerSelect.id) {
         case 'paper':
-          if (this.state.botSelect.id === this.state.playerSelect.id) {
+          if (this.state.botSelect.id === 'paper') {
+            score = this.state.score
             time = this.state.time - 1;
           } else if (this.state.botSelect.id === 'scissor') {
-            time = this.state.time - 1;
-            score = this.state.score - 1;
+            if(this.state.score > 0) {
+              score = this.state.score - 1;
+            }
+            if(this.state.time > 0) {
+              time = this.state.time - 1;
+            }
           } else {
             time = this.state.time + 1;
             score = this.state.score + 1;
           }
           break;
         case 'scissor':
-          if (this.state.botSelect.id === this.state.playerSelect.id) {
+          if (this.state.botSelect.id === 'scissor') {
+            score = this.state.score
             time = this.state.time - 1;
           } else if (this.state.botSelect.id === 'rock') {
             time = this.state.time - 1;
@@ -96,7 +101,8 @@ export default class RockPaperScissor extends Component {
           }
           break;
         case 'rock':
-          if (this.state.botSelect.id === this.state.playerSelect.id) {
+          if (this.state.botSelect.id === 'rock') {
+            score = this.state.score
             time = this.state.time - 1;
           } else if (this.state.botSelect.id === 'paper') {
             time = this.state.time - 1;
